@@ -1,7 +1,7 @@
 import {Link} from 'react-router-dom';
-import { Button } from '@/components/ui/button';
+import { Button } from '../ui/button';
 
-export default function HeroSection() {
+export default function Hero() {
   return (
     <section className="w-full py-12 md:py-24 lg:py-32 xl:py-48 bg-gradient-to-r from-gray-100 to-gray-200 dark:from-gray-800 dark:to-gray-900">
       <div className="container px-4 md:px-6 text-center">
@@ -14,12 +14,12 @@ export default function HeroSection() {
           </p>
           <div className="flex flex-col gap-4 sm:flex-row justify-center">
             <Link to="/plots">
-              <Button size="lg" className="w-full sm:w-auto">
+              <Button  className="w-full sm:w-auto">
                 View Available Plots
               </Button>
             </Link>
             <Link to="/contact">
-              <Button size="lg" variant="outline" className="w-full sm:w-auto">
+              <Button  className="w-full sm:w-auto">
                 Contact Us
               </Button>
             </Link>
