@@ -1,6 +1,6 @@
 export default function DroneVideo() {
   // Placeholder YouTube embed URL
-  const videoUrl = "https://www.youtube.com/embed/dQw4w9WgXcQ?si=y_y_y_y_y_y_y_y"; // Rick Astley - Never Gonna Give You Up
+  const videoUrl = "https://www.youtube.com/embed/dQw4w9WgXcQ?si=y_y_y_y_y_y_y_y" // Rick Astley - Never Gonna Give You Up
 
   return (
     <section className="w-full py-12 md:py-24 lg:py-32 bg-gray-100 dark:bg-gray-800">
@@ -25,5 +25,5 @@ export default function DroneVideo() {
         </div>
       </div>
     </section>
-  );
+  )
 }

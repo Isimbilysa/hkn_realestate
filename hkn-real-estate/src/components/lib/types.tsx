@@ -1,9 +1,11 @@
 export interface Plot {
+  availability: string
   id: string
   title: string
   price: number
   size: number // in square meters
   location: string
+    sizeSqFt: number
   coordinates: {
     lat: number
     lng: number

@@ -3,7 +3,7 @@
 import type React from "react"
 import { useState } from "react"
 import { X, ChevronLeft, ChevronRight, MapPin, Square, Calendar, Phone, Mail } from "lucide-react"
-import type { MapProperty } from "@/hooks/useMap"
+import type { MapProperty} from "../hooks/useMaps"
 
 interface PropertyModalProps {
   property: MapProperty | null

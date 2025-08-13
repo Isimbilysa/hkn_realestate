@@ -1,36 +1,36 @@
-'use client';
+"use client"
 
-import { useState } from 'react';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
-import { Button } from '@/components/ui/button';
+import { useState } from "react"
+import { Input } from "../ui/input"
+import { Label } from "../ui/label"
+import { Button } from "../ui/button"
 
 interface PlotFiltersProps {
-  onFilterChange: (filters: { minPrice: number; maxPrice: number; minSize: number; maxSize: number }) => void;
+  onFilterChange: (filters: { minPrice: number; maxPrice: number; minSize: number; maxSize: number }) => void
 }
 
 export default function PlotFilters({ onFilterChange }: PlotFiltersProps) {
-  const [minPrice, setMinPrice] = useState<string>('');
-  const [maxPrice, setMaxPrice] = useState<string>('');
-  const [minSize, setMinSize] = useState<string>('');
-  const [maxSize, setMaxSize] = useState<string>('');
+  const [minPrice, setMinPrice] = useState<string>("")
+  const [maxPrice, setMaxPrice] = useState<string>("")
+  const [minSize, setMinSize] = useState<string>("")
+  const [maxSize, setMaxSize] = useState<string>("")
 
   const handleApplyFilters = () => {
     onFilterChange({
-      minPrice: parseFloat(minPrice) || 0,
-      maxPrice: parseFloat(maxPrice) || Infinity,
-      minSize: parseFloat(minSize) || 0,
-      maxSize: parseFloat(maxSize) || Infinity,
-    });
-  };
+      minPrice: Number.parseFloat(minPrice) || 0,
+      maxPrice: Number.parseFloat(maxPrice) || Number.POSITIVE_INFINITY,
+      minSize: Number.parseFloat(minSize) || 0,
+      maxSize: Number.parseFloat(maxSize) || Number.POSITIVE_INFINITY,
+    })
+  }
 
   const handleClearFilters = () => {
-    setMinPrice('');
-    setMaxPrice('');
-    setMinSize('');
-    setMaxSize('');
-    onFilterChange({ minPrice: 0, maxPrice: Infinity, minSize: 0, maxSize: Infinity });
-  };
+    setMinPrice("")
+    setMaxPrice("")
+    setMinSize("")
+    setMaxSize("")
+    onFilterChange({ minPrice: 0, maxPrice: Number.POSITIVE_INFINITY, minSize: 0, maxSize: Number.POSITIVE_INFINITY })
+  }
 
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 p-4 border rounded-lg shadow-sm bg-white dark:bg-gray-950">
@@ -81,5 +81,5 @@ export default function PlotFilters({ onFilterChange }: PlotFiltersProps) {
         <Button onClick={handleApplyFilters}>Apply Filters</Button>
       </div>
     </div>
-  );
+  )
 }

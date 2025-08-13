@@ -6,12 +6,12 @@ import { Link } from "react-router-dom"
 import { ArrowRight, Play, Users, Award, TrendingUp } from "lucide-react"
 import PropertyCard from "../common/propertyCard"
 import InteractivePropertyMap from "../maps/maps"
-import PropertyModal from "@/components/common/PropertyModal"
+import PropertyModal from "../common/propertyModal"
 import TestimonialCard from "../common/TestimonialCard"
 import { houses } from "../lib/data"
 import { plots } from "../lib/data"
 import { testimonials } from "../lib/data"
-import type { MapProperty } from "@/hooks/useMap"
+import type { MapProperty } from "../hooks/useMaps"
 
 const Home: React.FC = () => {
   const [selectedProperty, setSelectedProperty] = useState<MapProperty | null>(null)

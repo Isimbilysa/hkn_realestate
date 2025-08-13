@@ -1,65 +1,64 @@
-'use client';
+"use client"
 
-import { useState } from 'react';
-import Image from 'next/image';
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger, DialogFooter } from '@/components/ui/dialog';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Textarea } from '@/components/ui/textarea';
-import { Label } from '@/components/ui/label';
-import { Plot } from '@/lib/types';
+import type React from "react"
+
+import { useState } from "react"
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogFooter } from "../ui/dialog"
+import { Button } from "../ui/button"
+import { Input } from "../ui/input"
+import { Textarea } from "../ui/textarea"
+import { Label } from "../ui/label"
+import type { Plot } from "../lib/types"
 
 interface PlotDetailModalProps {
-  plot: Plot | null;
-  isOpen: boolean;
-  onClose: () => void;
+  plot: Plot | null
+  isOpen: boolean
+  onClose: () => void
 }
 
 export default function PlotDetailModal({ plot, isOpen, onClose }: PlotDetailModalProps) {
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    message: '',
-  });
+    name: "",
+    email: "",
+    phone: "",
+    message: "",
+  })
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { id, value } = e.target;
-    setFormData((prev) => ({ ...prev, [id]: value }));
-  };
+    const { id, value } = e.target
+    setFormData((prev) => ({ ...prev, [id]: value }))
+  }
 
   const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    console.log('Reservation Form Submitted:', { plotId: plot?.id, ...formData });
-    alert('Your reservation inquiry has been sent! We will contact you shortly.');
-    setFormData({ name: '', email: '', phone: '', message: '' });
-    onClose();
-  };
+    e.preventDefault()
+    console.log("Reservation Form Submitted:", { plotId: plot?.id, ...formData })
+    alert("Your reservation inquiry has been sent! We will contact you shortly.")
+    setFormData({ name: "", email: "", phone: "", message: "" })
+    onClose()
+  }
 
-  if (!plot) return null;
+  if (!plot) return null
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
       <DialogContent className="sm:max-w-[800px] max-h-[90vh] overflow-y-auto">
         <DialogHeader>
-          <DialogTitle>{plot.name}</DialogTitle>
+          <DialogTitle>{plot.title}</DialogTitle>
           <DialogDescription>{plot.location}</DialogDescription>
         </DialogHeader>
         <div className="grid md:grid-cols-2 gap-6 py-4">
           <div className="relative w-full h-64 rounded-lg overflow-hidden">
-            <Image
-              src={plot.imageUrl || "/placeholder.svg"}
-              alt={plot.name}
-              layout="fill"
-              objectFit="cover"
-            />
+        <img src={plot.images[0]} alt={plot.title} />
           </div>
           <div className="space-y-4">
             <p className="text-3xl font-bold text-primary">${plot.price.toLocaleString()}</p>
             <p className="text-lg text-muted-foreground">{plot.sizeSqFt.toLocaleString()} sq ft</p>
             <p className="text-muted-foreground">{plot.description}</p>
             <p className="text-sm font-medium">
-              Availability: <span className={`font-semibold ${plot.availability === 'available' ? 'text-green-600' : 'text-red-600'}`}>
+              Availability:{" "}
+              <span
+                className={`font-semibold ${plot.availability === "available" ? "text-green-600" : "text-red-600"}`}
+              >
                 {plot.availability.toUpperCase()}
               </span>
             </p>
@@ -84,14 +83,22 @@ export default function PlotDetailModal({ plot, isOpen, onClose }: PlotDetailMod
             </div>
             <div className="space-y-2">
               <Label htmlFor="message">Message</Label>
-              <Textarea id="message" value={formData.message} onChange={handleChange} rows={4} placeholder="I'm interested in this plot..." />
+              <Textarea
+                id="message"
+                value={formData.message}
+                onChange={handleChange}
+                rows={4}
+                placeholder="I'm interested in this plot..."
+              />
             </div>
             <DialogFooter>
-              <Button type="submit" className="w-full sm:w-auto">Submit Inquiry</Button>
+              <Button type="submit" className="w-full sm:w-auto">
+                Submit Inquiry
+              </Button>
             </DialogFooter>
           </form>
         </div>
       </DialogContent>
     </Dialog>
-  );
+  )
 }
