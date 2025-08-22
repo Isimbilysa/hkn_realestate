@@ -3,7 +3,8 @@
 import { useState } from "react"
 import {Link} from "react-router-dom"
 // import { Button } from "@/components/ui/button"
-import { Home, Building, MapPin, Phone } from "lucide-react"
+import { Home, Building, MapPin, Phone, Menu, X } from "lucide-react"
+import { Button } from "../ui/button"
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -16,7 +17,7 @@ export default function Header() {
   ]
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-white  border-b border-border">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
@@ -50,9 +51,9 @@ export default function Header() {
 
           {/* Mobile menu button */}
           <div className="md:hidden">
-            {/* <Button variant="ghost" size="sm" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+            <Button variant="ghost" size="sm" onClick={() => setIsMenuOpen(!isMenuOpen)}>
               {isMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-            </Button> */}
+            </Button>
           </div>
         </div>
 

@@ -102,7 +102,7 @@ export default function FeaturedProperties() {
             className="font-bold text-3xl md:text-4xl text-foreground mb-4"
             style={{ fontFamily: "var(--font-space-grotesk)" }}
           >
-            <span className="text-transparent bg-gradient-to-r from-primary to-accent bg-clip-text">
+            <span className="text-transparent bg-gradient-to-r from-indigo-700 to-indigo-500 bg-clip-text">
               Featured Properties
             </span>
           </h2>

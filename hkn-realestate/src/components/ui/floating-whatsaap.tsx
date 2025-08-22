@@ -7,7 +7,7 @@ import { Button } from "../ui/button"
 export default function FloatingWhatsApp() {
   const [isOpen, setIsOpen] = useState(false)
 
-  const whatsappNumber = "+1234567890" // Replace with actual WhatsApp number
+  const whatsappNumber = "+250785064877" // Replace with actual WhatsApp number
   const message = "Hi! I'm interested in learning more about your properties."
 
   const openWhatsApp = () => {
