@@ -10,14 +10,14 @@ export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   const navigation = [
-    { name: "Home", href: "#home", icon: Home },
-    { name: "Properties", href: "#properties", icon: Building },
-    { name: "Map View", href: "#map", icon: MapPin },
-    { name: "Contact", href: "#contact", icon: Phone },
+    { name: "Home", href: "hero.tsx", icon: Home },
+    { name: "Properties", href: "feature-properties.tsx", icon: Building },
+    { name: "Map View", href: "interactive-map.tsx", icon: MapPin },
+    { name: "Contact", href: "contact.tsx", icon: Phone },
   ]
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-white  border-b border-border">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-white border-b border-border">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}

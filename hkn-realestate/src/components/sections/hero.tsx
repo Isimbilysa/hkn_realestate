@@ -5,14 +5,14 @@ export default function Hero() {
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
       <div className="absolute inset-0 z-0">
-        <div className="w-full h-full bg-slate-900">
+        <div className="w-full h-full bg-amber-600">
           {/* Geometric pattern overlay with new color scheme */}
           <div className="absolute inset-0 opacity-20">
             <div
               className="absolute top-0 left-0 w-full h-full"
               style={{
                 backgroundImage: `
-                     radial-gradient(circle at 25% 25%, rgba(139, 92, 246, 0.4) 0%, transparent 50%),
+                     radial-gradient(circle at 25% 25%, rgba(247, 189, 1, 0.4) 0%, transparent 50%),
                      radial-gradient(circle at 75% 75%, rgba(139, 92, 246, 0.3) 0%, transparent 50%),
                      linear-gradient(45deg, transparent 40%, rgba(139, 92, 246, 0.1) 50%, transparent 60%),
                      linear-gradient(-45deg, transparent 40%, rgba(139, 92, 246, 0.1) 50%, transparent 60%)
