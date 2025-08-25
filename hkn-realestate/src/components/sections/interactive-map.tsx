@@ -30,7 +30,7 @@ export default function InteractiveMap() {
   const mapInstanceRef = useRef<any>(null)
   const markersRef = useRef<any[]>([])
 
-  const filteredProperties = mapProperties.filter((property) => filter === "All" || property.type === filter)
+  // const filteredProperties = mapProperties.filter((property) => filter === "All" || property.type === filter)
 
   useEffect(() => {
     const loadMap = async () => {
