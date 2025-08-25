@@ -61,9 +61,9 @@ export default function Hero() {
         </h1>
 
         {/* Enhanced subtitle */}
-        <p className="text-xl md:text-2xl mt-8 mb-12 text-gray-100 max-w-4xl mx-auto leading-relaxed animate-fade-in-up font-light">
+        <p className="text-xl md:text-2xl mt-8 mb-12 text-gray-100 max-w-4xl mx-auto leading-relaxed animate-fade-in-up font-serif">
           From luxury villas overlooking Kigali's skyline to prime investment land in emerging neighborhoods. 
-          <span className="text-[#F7BD01] font-medium"> Your perfect property awaits.</span>
+          <span className="text-[#F7BD01] font-serif"> Your perfect property awaits.</span>
         </p>
 
         {/* Call-to-action buttons */}
@@ -96,7 +96,7 @@ export default function Hero() {
               </div>
             </div>
             <div className="text-5xl font-black font-serif text-[#F7BD01] mb-3">500+</div>
-            <div className="text-gray-100 font-medium text-lg">Premium Properties</div>
+            <div className="text-gray-100 font-serif font-medium text-lg">Premium Properties</div>
             <div className="text-gray-300 text-sm mt-1">Verified & Quality Assured</div>
           </div>
 
@@ -107,7 +107,7 @@ export default function Hero() {
               </div>
             </div>
             <div className="text-5xl font-black font-serif text-[#F7BD01] mb-3">1,000+</div>
-            <div className="text-gray-100 font-medium text-lg">Happy Families</div>
+            <div className="text-gray-100  font-medium text-lg">Happy Families</div>
             <div className="text-gray-300 text-sm mt-1">Living Their Dreams</div>
           </div>
 

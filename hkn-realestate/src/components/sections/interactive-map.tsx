@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from "react"
 import { Card, CardContent, CardHeader, CardTitle } from "../ui/card"
 import { Button } from "../ui/button"
 import { Badge } from "../ui/badge"
-import { MapPin, Filter, Home, Building2 } from "lucide-react"
+import { MapPin} from "lucide-react"
 
 const mapProperties = [
   { id: 1, title: "Modern Villa", price: "$450,000", type: "House", lat: -1.9441, lng: 30.0619, available: true },
@@ -52,7 +52,6 @@ export default function InteractiveMap() {
 
         // Add OpenStreetMap tiles
         L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-          attribution: "© OpenStreetMap contributors",
         }).addTo(mapInstanceRef.current)
 
         // Custom marker icons
@@ -76,7 +75,7 @@ export default function InteractiveMap() {
 
         // Add markers for all properties
         mapProperties.forEach((property) => {
-          const color = property.type === "House" ? "#0ea5e9" : "#8b5cf6"
+          const color = property.type === "House" ? "#1E3A8A" : "#F7BD01"
           const icon = createCustomIcon(color, property.available)
 
           const marker = L.marker([property.lat, property.lng], { icon })
@@ -112,9 +111,9 @@ export default function InteractiveMap() {
 
         // Update marker style for selection
         const isSelected = selectedProperty?.id === property.id
-        const color = property.type === "House" ? "#0ea5e9" : "#8b5cf6"
+        const color = property.type === "House" ? "#1E3A8A" : "#F7BD01"
         const scale = isSelected ? "scale(1.2)" : "scale(1)"
-        const ring = isSelected ? "box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.5);" : ""
+        const ring = isSelected ? "box-shadow: 0 0 0 3px rgba(30, 58, 138, 0.5);" : ""
 
         marker.getElement().innerHTML = `<div style="
           width: 24px; 
@@ -139,117 +138,106 @@ export default function InteractiveMap() {
   }, [filter, selectedProperty])
 
   return (
-    <section id="map" className="py-20 bg-background">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="font-playfair text-3xl md:text-4xl font-bold text-foreground mb-4">
-            Interactive Property Map
-          </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Explore available properties in Kigali, Rwanda on our interactive map. Click on any marker to view details.
-          </p>
-        </div>
+    <section id="map" className="py-20 bg-[#F9FAFB] relative overflow-hidden">
+  {/* Decorative overlay */}
+  <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_right,#F7BD01_0%,transparent_50%)] opacity-20" />
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          {/* Map Area */}
-          <div className="lg:col-span-2">
-            <Card className="h-96 lg:h-[500px]">
-              <CardHeader className="pb-4">
-                <div className="flex items-center justify-between">
-                  <CardTitle className="flex items-center">
-                    <MapPin className="w-5 h-5 mr-2 text-primary" />
-                    Property Locations
-                  </CardTitle>
-                  <div className="flex gap-2">
-                    <Button
-                      variant={filter === "All" ? "default" : "outline"}
-                      size="sm"
-                      onClick={() => setFilter("All")}
-                    >
-                      <Filter className="w-4 h-4 mr-1" />
-                      All
-                    </Button>
-                    <Button
-                      variant={filter === "House" ? "default" : "outline"}
-                      size="sm"
-                      onClick={() => setFilter("House")}
-                    >
-                      <Home className="w-4 h-4 mr-1" />
-                      Houses
-                    </Button>
-                    <Button
-                      variant={filter === "Land" ? "default" : "outline"}
-                      size="sm"
-                      onClick={() => setFilter("Land")}
-                    >
-                      <Building2 className="w-4 h-4 mr-1" />
-                      Land
-                    </Button>
-                  </div>
-                </div>
-              </CardHeader>
-              <CardContent className="relative h-full p-0">
-                <div ref={mapRef} className="w-full h-full rounded-lg" style={{ minHeight: "400px" }} />
-              </CardContent>
-            </Card>
-          </div>
+  <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    {/* Header */}
+    <div className="text-center mb-16">
+      <h2 className="font-serif text-4xl md:text-5xl font-bold text-[#1E3A8A] mb-2">
+        Interactive <span className="text-[#F7BD01]">Property Map</span>
+      </h2>
+      <div className="h-1 w-24 bg-[#F7BD01] mx-auto rounded-full mb-4"></div>
+      <p className="text-lg text-gray-700 max-w-2xl mx-auto">
+        Explore available properties in Kigali, Rwanda. Click on any marker to view details.
+      </p>
+    </div>
 
-          {/* Property Details */}
-          <div className="space-y-6">
-            <Card>
-              <CardHeader>
-                <CardTitle>Property Details</CardTitle>
-              </CardHeader>
-              <CardContent>
-                {selectedProperty ? (
-                  <div className="space-y-4">
-                    <div>
-                      <h3 className="font-semibold text-lg">{selectedProperty.title}</h3>
-                      <p className="text-2xl font-bold text-primary">{selectedProperty.price}</p>
-                    </div>
-
-                    <div className="flex items-center gap-2">
-                      <Badge variant={selectedProperty.type === "House" ? "default" : "secondary"}>
-                        {selectedProperty.type}
-                      </Badge>
-                      <Badge variant={selectedProperty.available ? "default" : "destructive"}>
-                        {selectedProperty.available ? "Available" : "Sold"}
-                      </Badge>
-                    </div>
-
-                    {selectedProperty.available && (
-                      <Button className="w-full bg-primary hover:bg-primary/90">Contact About This Property</Button>
-                    )}
-                  </div>
-                ) : (
-                  <p className="text-muted-foreground text-center py-8">Click on a marker to view property details</p>
-                )}
-              </CardContent>
-            </Card>
-
-            {/* Legend */}
-            <Card>
-              <CardHeader>
-                <CardTitle>Map Legend</CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-3">
-                <div className="flex items-center gap-3">
-                  <div className="w-4 h-4 bg-primary rounded-full"></div>
-                  <span className="text-sm">Available Houses</span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <div className="w-4 h-4 bg-accent rounded-full"></div>
-                  <span className="text-sm">Available Land Plots</span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <div className="w-4 h-4 bg-gray-400 rounded-full"></div>
-                  <span className="text-sm">Sold Properties</span>
-                </div>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
+    <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+      {/* Map Area */}
+      <div className="lg:col-span-2">
+        <Card className="rounded-xl shadow-lg overflow-hidden">
+          <CardHeader className="flex items-center justify-between px-6 py-4">
+            <h3 className="flex items-center text-white font-semibold">
+              <MapPin className="w-5 h-5 mr-2 text-[#F7BD01]" />
+              Property Locations
+            </h3>
+            <div className="flex gap-2">
+              {["All", "House", "Land"].map((f) => (
+                <Button
+                  key={f}
+                  size="sm"
+                  variant={filter === f ? "default" : "outline"}
+                  onClick={() => setFilter(f as any)}
+                  className="rounded-full px-4 py-1 text-sm font-medium"
+                >
+                  {f}
+                </Button>
+              ))}
+            </div>
+          </CardHeader>
+          <CardContent className="p-0 h-96 lg:h-[500px]">
+            <div ref={mapRef} className="w-full h-full" />
+          </CardContent>
+        </Card>
       </div>
-    </section>
-  )
-}
+
+      {/* Property Details + Legend */}
+      <div className="space-y-6">
+        {/* Selected Property */}
+        <Card className="rounded-xl shadow-lg overflow-hidden">
+          <CardHeader>
+            <CardTitle>Property Details</CardTitle>
+          </CardHeader>
+          <CardContent>
+            {selectedProperty ? (
+              <div className="space-y-4">
+                <h3 className="font-semibold text-lg">{selectedProperty.title}</h3>
+                <p className="text-2xl font-bold text-[#F7BD01]">{selectedProperty.price}</p>
+                <div className="flex gap-2">
+                  <Badge variant="default">{selectedProperty.type}</Badge>
+                  <Badge variant={selectedProperty.available ? "default" : "destructive"}>
+                    {selectedProperty.available ? "Available" : "Sold"}
+                  </Badge>
+                </div>
+                {selectedProperty.available && (
+                  <Button className="w-full bg-[#F7BD01] hover:bg-[#dba901] text-[#1E3A8A] mt-2">
+                    Contact About This Property
+                  </Button>
+                )}
+              </div>
+            ) : (
+              <p className="text-gray-200 text-center py-8">
+                Click on a marker to view property details
+              </p>
+            )}
+          </CardContent>
+        </Card>
+
+        {/* Map Legend */}
+        <Card className="rounded-xl shadow-lg">
+          <CardHeader>
+            <CardTitle>Legend</CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-2">
+            <div className="flex items-center gap-2">
+              <span className="w-4 h-4 bg-[#1E3A8A] rounded-full"></span>
+              <span className="text-sm text-gray-200">Available Houses</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <span className="w-4 h-4 bg-[#F7BD01] rounded-full"></span>
+              <span className="text-sm text-gray-200">Available Land Plots</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <span className="w-4 h-4 bg-gray-400 rounded-full"></span>
+              <span className="text-sm text-gray-200">Sold Properties</span>
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+    </div>
+  </div>
+</section>
+
+)}
