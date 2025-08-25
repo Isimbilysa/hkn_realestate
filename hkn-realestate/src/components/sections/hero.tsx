@@ -10,7 +10,7 @@ export default function Hero() {
         <div
           className="w-full h-full bg-cover bg-center brightness-75"
           style={{
-            backgroundImage: "url('src/assets/keith-kasaija-lii0uaz8Ieo-unsplash.jpg')"
+            backgroundImage: "url('/keith-kasaija-lii0uaz8Ieo-unsplash.jpg')"
           }}
         />
 
