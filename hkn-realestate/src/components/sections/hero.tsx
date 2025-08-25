@@ -88,7 +88,7 @@ export default function Hero() {
         </div>
 
         {/* Enhanced stats with icons */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto animate-fade-in-up delay-700">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto animate-fade-in-up delay-700">
           <div className="group text-center p-6 rounded-2xl bg-white/10 backdrop-blur-sm border border-white/20 transform hover:scale-110 hover:bg-white/15 transition-all duration-300">
             <div className="flex justify-center mb-4">
               <div className="p-3 bg-[#F7BD01]/20 rounded-full">

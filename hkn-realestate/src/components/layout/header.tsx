@@ -105,13 +105,13 @@ export default function Header() {
 
             <div className="w-px h-6 bg-gray-300 opacity-50"></div>
 
-            <Button
+            {/* <Button
               size="sm"
               className="bg-gradient-to-r from-[#1E3A8A] to-[#2563EB] hover:from-[#16275B] hover:to-[#1E3A8A] text-white px-6 py-2 rounded-full font-semibold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
             >
               <User className="w-4 h-4 mr-2" />
               Sign In
-            </Button>
+            </Button> */}
 
             <Button
               size="sm"
