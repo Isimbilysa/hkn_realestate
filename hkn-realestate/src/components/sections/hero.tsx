@@ -46,7 +46,7 @@ export default function Hero() {
       {/* Content */}
       <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         {/* Enhanced responsive typing effect */}
-        <h1 className="font-serif font-black text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl mt-8 sm:mt-16 leading-tight">
+        <h1 className="font-serif font-black text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl mt-8 sm:mt-10 leading-tight">
           {/* First line */}
           <span className="block overflow-hidden">
             <span
