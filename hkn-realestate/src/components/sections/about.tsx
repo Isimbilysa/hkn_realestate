@@ -55,7 +55,7 @@ const achievements = [
 ]
 
 export default function About() {
-  const [hoveredFeature, setHoveredFeature] = useState<number | null>(null)
+  const [, setHoveredFeature] = useState<number | null>(null)
 
   return (
     <section className="py-24 bg-gradient-to-br from-[#1E3A8A] via-[#1E3A8A]/95 to-[#16275B] text-white relative overflow-hidden">
