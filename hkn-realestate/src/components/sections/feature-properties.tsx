@@ -216,7 +216,7 @@ export default function FeaturedProperties() {
 
   const handleWhatsAppContact = (propertyTitle: string, price: string, agent?: any) => {
     const message = `Hi HKN Real Estate! I'm interested in "${propertyTitle}" (ID: ${selectedProperty?.propertyId}) listed at ${price}. Could you please provide more details and arrange a viewing?`
-    const phoneNumber = agent?.phone || "250788123456"
+    const phoneNumber = agent?.phone || "250785064877"
     const whatsappUrl = `https://wa.me/${phoneNumber.replace('+', '')}?text=${encodeURIComponent(message)}`
     window.open(whatsappUrl, "_blank")
   }
